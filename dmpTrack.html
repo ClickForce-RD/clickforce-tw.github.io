@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracker UAT Test</title>
+    <script src="https://cdn.holmesmind.com/js/rtid.js"></script>
+    <script src="https://cdn.holmesmind.com/dmp/cft/triggerTracker.js"></script>
+  <script>
+  clickforce_rtid();
+  </script>
+    <!-- 引入要測試的 trackerUat.js -->
+    <!--script src="dmp/cft/trackerUat.js"></!--script-->
+     <script src="https://cdn.holmesmind.com/dmp/cft/trackerUat.js?v=1234"></script>
+    <script>
+        // 設定 IDs (需在 setSiteId 之前)
+        clickforce_rtid("10247001");
+        cft('setIds', {
+            cid: 'TEST_CID_123',
+            aaid: 'TEST_AAID_456',
+            idfa: 'TEST_IDFA_789'
+        });
+
+        // 設定 Site ID (這會觸發 pageview 發送)
+        cft('setSiteId', 'CF-26010016637');
+        cft("setViewPercentage");
+    </script>
+</head>
+<body>
+    <h1>Tracker UAT Test Page</h1>
+    <p>Check the Network tab in DevTools for a request to <code>dmp/analytics</code>.</p>
+    <p>Verify that parameters <code>cid</code>, <code>aaid</code>, <code>idfa</code>, and <code>cf_p</code> are present.</p>
+</body>
+</html>
